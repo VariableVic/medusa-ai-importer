@@ -12,7 +12,6 @@ const formatVariantPrices = (product: AdminPostProductsReq) => {
   // if not, remove item from the price array
   if (product.variants) {
     product.variants.forEach((variant) => {
-      console.log({ variant_before: variant });
       if (variant.prices) {
         variant.prices.forEach((price) => {
           if (price.amount) {
@@ -20,7 +19,6 @@ const formatVariantPrices = (product: AdminPostProductsReq) => {
           }
         });
         variant.prices = variant.prices.filter((price) => price.amount);
-        console.log({ variant_after: variant });
       }
     });
   }
