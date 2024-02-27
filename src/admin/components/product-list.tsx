@@ -6,9 +6,8 @@ import CreateProduct from "./create-product";
 import CreateAllProducts from "./create-all-products";
 import { useState } from "react";
 
-type ProductListProps = {
+type ProductListProps = SettingProps & {
   products: AdminPostProductsReq[];
-  notify: SettingProps["notify"];
 };
 
 const ProductCard = ({ products, notify }: ProductListProps) => {
