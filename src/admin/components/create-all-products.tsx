@@ -3,7 +3,7 @@ import type { SettingProps } from "@medusajs/admin";
 import { Badge, Button } from "@medusajs/ui";
 import { CheckMini } from "@medusajs/icons";
 import { useAdminCreateProduct } from "medusa-react";
-import { cleanUpProducts } from "./utils/helpers";
+import { cleanUpProducts } from "../util/helpers";
 
 const CreateAllProducts = ({
   products,

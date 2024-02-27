@@ -22,11 +22,11 @@ export default class OpenAiService {
   }: Omit<ChatCompletionCreateParamsBase, "model">): Promise<
     APIPromise<OpenAI.Chat.Completions.ChatCompletion>
   > {
-    let tokens = this.count_tokens({ messages, tools });
+    let tokens = this.countTokens({ messages, tools });
 
     while (tokens > 3300 && messages.length > 2) {
       messages.splice(1, 1);
-      tokens = this.count_tokens({ messages, tools });
+      tokens = this.countTokens({ messages, tools });
     }
 
     return await this.openai.chat.completions.create({
@@ -39,7 +39,7 @@ export default class OpenAiService {
     });
   }
 
-  private count_tokens({
+  private countTokens({
     messages,
     tools,
   }: Omit<ChatCompletionCreateParamsBase, "model">): number {
@@ -53,7 +53,7 @@ export default class OpenAiService {
       if (item.name) numTokens--;
 
       for (const value of Object.values(item)) {
-        if (value !== undefined && value !== null) {
+        if (value) {
           numTokens += this.encoding.encode(String(value)).length;
         }
       }

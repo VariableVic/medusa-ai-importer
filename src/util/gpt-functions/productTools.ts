@@ -23,7 +23,7 @@ const variantObject = {
   properties: {
     title: {
       ...stringType,
-      description: "Title of the variant.",
+      description: "Title of the variant. Cannot be empty.",
     },
     sku: {
       ...stringType,

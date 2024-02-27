@@ -1,5 +1,5 @@
 import { MedusaRequest, MedusaResponse } from "@medusajs/medusa";
-import { productTools } from "../../../gpt-functions/products";
+import { productTools } from "../../../util/gpt-functions/productTools";
 
 import OpenAiService from "src/services/open-ai";
 import { ChatCompletionTool } from "openai/resources";
@@ -30,9 +30,6 @@ export async function POST(req: MedusaRequest, res: MedusaResponse) {
 
     // Ask OpenAI for a chat completion given the prompt
     const completion = await openAiService.create({ messages, tools });
-
-    // Set up response headers
-    res.setHeader("Content-Type", "application/json");
 
     // return the completion
     res.status(200).send(completion);

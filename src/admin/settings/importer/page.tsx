@@ -9,7 +9,7 @@ import {
 } from "@medusajs/ui";
 import { useChat } from "ai/react";
 import { ChatRequest, Message, ToolCall, ToolCallHandler, nanoid } from "ai";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import ProductList from "../../components/product-list";
 import { useState } from "react";
 import { AdminPostProductsReq } from "@medusajs/medusa";
@@ -91,7 +91,8 @@ const AiImporter = ({ notify }: SettingProps) => {
     experimental_onToolCall: toolCallHandler,
     onFinish: (message) => {
       try {
-        setProducts(parseProducts(message));
+        console.log("Message", message);
+        setProducts((prev) => [...prev, ...parseProducts(message)]);
       } catch (e) {
         console.error(e);
       }
