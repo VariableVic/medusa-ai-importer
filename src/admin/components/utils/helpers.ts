@@ -1,7 +1,8 @@
 import { AdminPostProductsReq } from "@medusajs/medusa";
 
 const removeDecimal = (value: number) => {
-  if (!value) return value;
+  if (!value || typeof value !== "number") return;
+
   if (value.toString().includes(".")) {
     return Math.round(value * 100);
   }
