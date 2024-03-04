@@ -1,10 +1,11 @@
-import { AdminPostProductsReq } from "@medusajs/medusa";
 import type { SettingProps } from "@medusajs/admin";
+import { AdminPostProductsReq } from "@medusajs/medusa";
 import { Table } from "@medusajs/ui";
 import { motion } from "framer-motion";
-import CreateProduct from "./create-product";
-import CreateAllProducts from "./create-all-products";
 import { useState } from "react";
+
+import CreateAllProducts from "./create-all-products";
+import CreateProduct from "./create-product";
 
 type ProductListProps = {
   products: AdminPostProductsReq[];

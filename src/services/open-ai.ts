@@ -1,7 +1,7 @@
+import { encoding_for_model, Tiktoken, TiktokenModel } from "@dqbd/tiktoken";
 import OpenAI from "openai";
 import { APIPromise } from "openai/core";
 import { ChatCompletionCreateParamsBase } from "openai/resources/chat/completions";
-import { encoding_for_model, Tiktoken, TiktokenModel } from "@dqbd/tiktoken";
 
 export default class OpenAiService {
   private openai: OpenAI;

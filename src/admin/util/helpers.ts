@@ -9,8 +9,6 @@ const removeDecimal = (value: number) => {
 };
 
 const formatVariantPrices = (product: AdminPostProductsReq) => {
-  // if the product has variants, and the variant has prices, and prices[i].amount exists, remove the decimal
-  // if not, remove item from the price array
   if (product.variants) {
     product.variants.forEach((variant) => {
       if (variant.prices) {

@@ -1,18 +1,18 @@
 import type { SettingConfig, SettingProps } from "@medusajs/admin";
+import { AdminPostProductsReq } from "@medusajs/medusa";
 import {
   Button,
   Container,
-  Text,
-  Select,
-  Textarea,
   Heading,
+  Select,
+  Text,
+  Textarea,
 } from "@medusajs/ui";
-import { useChat } from "ai/react";
 import { ChatRequest, Message, ToolCall, ToolCallHandler, nanoid } from "ai";
-import { useEffect } from "react";
+import { useChat } from "ai/react";
+import { useEffect, useState } from "react";
+
 import ProductList from "../../components/product-list";
-import { useState } from "react";
-import { AdminPostProductsReq } from "@medusajs/medusa";
 
 const backendUrl =
   process.env.MEDUSA_BACKEND_URL === "/"
@@ -160,61 +160,63 @@ const AiImporter = ({ notify }: SettingProps) => {
   };
 
   return (
-    <Container className="p-8 flex flex-col gap-y-4 mb-4">
-      <h1 className="text-grey-90 inter-xlarge-semibold">AI Importer</h1>
-      <Text className="text-grey-50 flex flex-row gap-2">
-        The AI Importer lets you import any data from raw text or JSON files.
-      </Text>
+    <div className="overflow-hidden p-px">
+      <Container className="p-8 flex flex-col gap-y-4 mb-4">
+        <h1 className="text-grey-90 inter-xlarge-semibold">AI Importer</h1>
+        <Text className="text-grey-50 flex flex-row gap-2">
+          The AI Importer lets you import any data from raw text or JSON files.
+        </Text>
 
-      {products?.length > 0 && (
-        <ProductList products={products} notify={notify} />
-      )}
+        {products?.length > 0 && (
+          <ProductList products={products} notify={notify} />
+        )}
 
-      <form
-        onSubmit={handleFormSubmit}
-        className="w-full flex flex-col gap-y-4"
-      >
-        <Heading>Paste raw data below:</Heading>
-        <div className="flex-1">
-          <Textarea
-            className="bg-gray-50 whitespace-pre-wrap h-40"
-            onChange={handleInputChange}
-            value={input}
-            disabled={isLoading}
-          />
-        </div>
-        <div className="flex items-stretch gap-4 w-full">
-          <Select onValueChange={(value) => setType(value)} value={type}>
-            <Select.Trigger>
-              <Select.Value placeholder="Select a data type" />
-            </Select.Trigger>
-            <Select.Content>
-              {["Product", "Category", "Type"].map((item) => {
-                return (
-                  <Select.Item key={item} value={item}>
-                    {item}
-                  </Select.Item>
-                );
-              })}
-            </Select.Content>
-          </Select>
-          <Button
-            disabled={isLoading}
-            type="submit"
-            className="w-max min-w-max"
-          >
-            {isLoading ? loadingMessages[messageIndex] : "Import"}
-            {isLoading && (
-              <div className="flex flex-row gap-1 ml-1">
-                <span className="animate-bounce">.</span>
-                <span className="animate-bounce delay-75">.</span>
-                <span className="animate-bounce delay-150">.</span>
-              </div>
-            )}
-          </Button>
-        </div>
-      </form>
-    </Container>
+        <form
+          onSubmit={handleFormSubmit}
+          className="w-full flex flex-col gap-y-4"
+        >
+          <Heading>Paste raw data below:</Heading>
+          <div className="flex-1">
+            <Textarea
+              className="bg-gray-50 whitespace-pre-wrap h-40"
+              onChange={handleInputChange}
+              value={input}
+              disabled={isLoading}
+            />
+          </div>
+          <div className="flex items-stretch gap-4 w-full">
+            <Select onValueChange={(value) => setType(value)} value={type}>
+              <Select.Trigger>
+                <Select.Value placeholder="Select a data type" />
+              </Select.Trigger>
+              <Select.Content>
+                {["Product", "Category", "Type"].map((item) => {
+                  return (
+                    <Select.Item key={item} value={item}>
+                      {item}
+                    </Select.Item>
+                  );
+                })}
+              </Select.Content>
+            </Select>
+            <Button
+              disabled={isLoading}
+              type="submit"
+              className="w-max min-w-max"
+            >
+              {isLoading ? loadingMessages[messageIndex] : "Import"}
+              {isLoading && (
+                <div className="flex flex-row gap-1 ml-1">
+                  <span className="animate-bounce">.</span>
+                  <span className="animate-bounce delay-75">.</span>
+                  <span className="animate-bounce delay-150">.</span>
+                </div>
+              )}
+            </Button>
+          </div>
+        </form>
+      </Container>
+    </div>
   );
 };
 
