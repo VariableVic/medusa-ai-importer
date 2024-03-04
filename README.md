@@ -32,11 +32,11 @@ https://github.com/VariableVic/medusa-ai-importer/assets/42065266/597b8e42-937e-
 ## Getting Started
 
 1. Clone repo and install dependencies.
-2. In your `.env` file, add an `OPENAI_API_KEY` environment variable containing your API key, and link  your database:
+2. In your `.env` file, add an `OPENAI_API_KEY` environment variable containing your API key, and link your database:
 
 ```
 OPENAI_API_KEY=<YOUR OPENAI API KEY>
 DATABASE_URL=<YOUR MEDUSA DB URL>
 ```
 
-3. Start your dev server and log into the admin. Open any order details page and the widget will appear on the bottom of the page!
+3. Start your dev server and log into the admin. You'll find the importer on the settings page under 'extensions'!
