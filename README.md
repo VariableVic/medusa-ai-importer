@@ -22,7 +22,7 @@ An AI Product Importer for the [Medusa](https://medusajs.com/) admin. You can pa
   </a>
 </p>
 
-https://github.com/VariableVic/medusa-ai-importer/assets/42065266/591bc5c7-f5ae-4c62-9e94-13c8bbbdfeb6
+https://github.com/VariableVic/medusa-ai-importer/assets/42065266/597b8e42-937e-46e6-9ed4-fa81555ac0ed
 
 ## Prerequisites
 
