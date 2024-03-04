@@ -14,7 +14,7 @@
 
 An AI Product Importer for the [Medusa](https://medusajs.com/) admin. You can paste in product data in any form: JSON, XML, csv, text, etc - and the LLM will turn in into Medusa products. Built with [Medusa UI](https://docs.medusajs.com/ui), [OpenAI](https://platform.openai.com), and [Vercel AI SDK](https://sdk.vercel.ai).
 
-**Disclaimer**: this code is the result of my experimentation, and is by no means optimized or actively maintained.
+**Disclaimer**: this code is the result of my experimentation, and is provided as-is. It's by no means optimized or actively maintained.
 
 <p align="center">
   <a href="https://twitter.com/intent/follow?screen_name=VariableVic">
